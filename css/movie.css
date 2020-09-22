@@ -5,7 +5,7 @@
     --gold-color: #ffac41;
 }
 * {
-    border: 1px solid blue;
+    box-sizing: border-box;
 }
 body {
     background-color: var(--light-main-color);
@@ -26,3 +26,41 @@ body {
     background-size: cover;
     padding: 0;
 }
+#img-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+#img-display img {
+    height: 300px;
+    max-width: 250px;
+    margin: 15px;
+    border: 2px outset grey;
+    box-shadow: 0px 0px 3px 20px;
+}
+
+#img-display div {
+    margin: 20px;
+    /*background-image: url("../img/goldborder.jpg");*/
+    background-color: black;
+    box-shadow: 0px 0px 10px 5px white;
+    border-radius: 5px;
+
+}
+#popcorn-guy img {
+    height: 200px;
+    width: 200px;
+}
+
+
+
+/*#img-display div {*/
+/*    border: 50px solid transparent;*/
+/*    border-image: url("../img/movieposter.jpg") !important;*/
+/*    border-image-slice:132 223 130 223;*/
+/*    border-image-width:45px 50px 50px 50px;*/
+/*    border-image-outset:0px 0px 0px 0px;*/
+/*    border-image-repeat:stretch stretch;*/
+/*}*/
+
+

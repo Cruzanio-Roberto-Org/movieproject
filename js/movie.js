@@ -1,11 +1,47 @@
+(function ($) {
+    $(document).ready(function () {
 
-/*TODO Movie displayed in cards
+        let movURL = 'https://ebony-palm-titanosaurus.glitch.me/movies'
+
+        function classToggle() {
+            $('#popcorn-guy').addClass('d-none')
+            $('.cardTog').removeClass('d-none')
+        }
+
+        function listener1() {
+            $('#img-display img').click(function () {
+                fetch(movURL + `/${$(this).attr('id')}`)
+                    .then(res => res.json())
+                    .then(({title, rating, description, genre, actors}) => {
+                        classToggle()
+                        $('#title').html(title)
+                        $('#rating').html(rating)
+                        $('#description').html(description)
+                        $('#genre').html(genre)
+                        $('#actors').html(actors)
+
+                    })
+            })
+        }
+
+        fetch(movURL)
+            .then(res => res.json())
+            .then(data => {
+                for (let element of data) {
+                    $('#img-display').append(`<div class="dis-hover"><img id='${element.id}' src="img/theaterentrance.jpg"></div>`)
+                }
+                listener1()
+            })
+
+
+    })
+})(jQuery);
+/*Movie displayed in cards
 *
 * TODO Advertised movies in a carousel
 *  TODO carousel advertises the top three rated movies, title of carousel connects user to seeing what is popular
-* TODO each card outer border with image metal plating
-*  image with the movie from api
-* TODO click on image reveals movie info/ maybe a hover effect?
+* each card outer border with image metal plating
+*  TODO image with the movie from api
 *  TODO splash screen when card not chosen/ popcorn guy
 *  TODO click on image will create a container with info on top of cards and carousel moves up
 *  TODO movie info consists of title, description, movie rating, ranking system, genre, actors,
@@ -22,7 +58,7 @@
 *            TODO disable attribute on click listeners when loading
 *             TODO drag and drop with a clip of film roll
 *              TODO trailers display option
-*
+*TODO reveals movie info/ maybe a hover effect?
 * */
 
 
