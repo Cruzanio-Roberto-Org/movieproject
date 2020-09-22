@@ -1,0 +1,28 @@
+:root{
+    --bold-main-color: #000000;
+    --light-main-color: #323232;
+    --red-color:#ff1e56;
+    --gold-color: #ffac41;
+}
+* {
+    border: 1px solid blue;
+}
+body {
+    background-color: var(--light-main-color);
+}
+#nav_bar {
+    background-color: transparent;
+}
+#nav_logo {
+    color: var(--light-main-color);
+    border: 1px solid var(--red-color);
+    text-shadow: 1px 1px 5px var(--red-color);
+}
+#jumbo{
+    background-image: url("../img/theaterentrance.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 0;
+}
