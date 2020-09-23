@@ -64,9 +64,9 @@
     </div>
 </main>
 <article>
-    <div id="splash">
+    <div id="splash" class="d-flex justify-content-center">
         <div id="popcorn-guy">
-            <img src="img/popcornguy.jpg">
+            <img class="rounded-circle" src="img/popcornguy.jpg">
         </div>
         <div class="card mb-3 d-none cardTog" style="max-width: 540px;">
             <div class="row no-gutters">
@@ -74,13 +74,18 @@
                     <img src="img/theaterentrance.jpg" class="card-img" alt="...">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body" data-serv = "">
+                    <div class="card-body card-main" data-serv = "">
                         <h5 id="title" class="card-title">Title</h5>
                         <div id="rating-box"><small id="rating">padadw</small></div>
                         <p id="info" class="card-text"></p>
                         <p class="card-text"><small id="rank"></small></p>
                         <p id="genre" class="card-text"></p>
                         <p id="actors" class="card-text"></p>
+                        <div>
+                            <button type="button" id="delete">Delete</button>
+                            <button></button>
+                            <button></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -155,7 +160,9 @@
                 </div>
             </div>
         </div>
-        <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <div class="d-flex justify-content-center">
+            <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
         <div id="img-display">
 
         </div>

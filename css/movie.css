@@ -1,17 +1,21 @@
 :root{
     --bold-main-color: #000000;
-    --light-main-color: #323232;
-    --red-color:#ff1e56;
-    --gold-color: #ffac41;
+    --light-main-color: #444444;
+    --red-color:#f30067;
+    --gold-color:#ffac41;
+    --blue-color:#00d1cd;
+    --light-color:#00d1cd;
 }
 * {
     box-sizing: border-box;
 }
 body {
     background-color: var(--light-main-color);
+
 }
 #nav_bar {
     background-color: transparent;
+   position: absolute;
 }
 #nav_logo {
     color: var(--light-main-color);
@@ -24,7 +28,6 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    padding: 0;
 }
 #img-display {
     display: flex;
@@ -47,9 +50,12 @@ body {
     border-radius: 5px;
 
 }
+#popcorn-guy{
+    background-color: var(--red-color);
+}
 #popcorn-guy img {
-    height: 200px;
-    width: 200px;
+    height: 200px !important;
+    width: 200px !important;
 }
 .lds-grid {
     display: inline-block;
@@ -118,16 +124,8 @@ body {
         opacity: 0.5;
     }
 }
-
-
-
-/*#img-display div {*/
-/*    border: 50px solid transparent;*/
-/*    border-image: url("../img/movieposter.jpg") !important;*/
-/*    border-image-slice:132 223 130 223;*/
-/*    border-image-width:45px 50px 50px 50px;*/
-/*    border-image-outset:0px 0px 0px 0px;*/
-/*    border-image-repeat:stretch stretch;*/
-/*}*/
-
+/* TODO replace search text with icon
+TODO neon button effect maybe baby blue with white glow
+TODO add rc car logo with company logo
+ */
 

@@ -1,7 +1,7 @@
 (function ($) {
     $(document).ready(function () {
 
-        let movURL = 'https://ebony-palm-titanosaurus.glitch.me/movies'
+        const movURL = 'https://ebony-palm-titanosaurus.glitch.me/movies'
 //load toggle
         const toggleLoad = () => $('.lds-grid').toggleClass('d-none')
 //splash screen toggle
@@ -80,24 +80,37 @@
                 body: JSON.stringify(newInfo)
             }).then(pageLoad)
         })
+        $('#delete').click(() =>{
+            let response = confirm("Would you like to delete this movie?")
+            if(response){
+                let idNum = $(".card-main").attr('data-serv')
+                fetch(`${movURL}/${idNum}`,{
+                    method: 'DELETE',
+                    headers:{"Content-Type" :"application/json"}
+                }).then(()=>{
+                    toggleLoad()
+                    $('#popcorn-guy').removeClass('d-none')
+                    $('.cardTog').addClass('d-none')
+                })
+                    .then(pageLoad)
+            }
+        })
         pageLoad();
     })
+
 })(jQuery);
 /*Movie displayed in cards
 *
 * TODO Advertised movies in a carousel
 *  TODO carousel advertises the top three rated movies, title of carousel connects user to seeing what is popular
 * each card outer border with image metal plating
-*
 * splash screen when card not chosen/ popcorn guy
 *  click on image will create a container with info on top of cards and carousel moves up
 *   movie info consists of title, description, movie rating, ranking system, genre, actors,
 * actors will be like two or three lead actors
-*
 *loading screen will be on splash
 * get request for page load
 *         add a movie as a modal using forms
-*
 *          TODO delete info button on bottom left that deletes from db
 *          TODO edit info in movies we need to add an edit anchor in middle
 *           TODO book movie button on the bottom right
