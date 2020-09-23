@@ -2,14 +2,14 @@
     $(document).ready(function () {
 
         let movURL = 'https://ebony-palm-titanosaurus.glitch.me/movies'
-
+//load toggle
         const toggleLoad = () => $('.lds-grid').toggleClass('d-none')
-
+//splash screen toggle
         function classToggle() {
             $('#popcorn-guy').addClass('d-none')
             $('.cardTog').removeClass('d-none')
         }
-
+// image to card info listener
         function listener1() {
             $('#img-display img').click(function () {
                 fetch(movURL + `/${$(this).attr('id')}`)
@@ -25,7 +25,7 @@
                     })
             })
         }
-
+// default on page display of images
         const pageLoad = () => {
             $('#img-display').children().remove();
             fetch(movURL)
@@ -39,6 +39,8 @@
                     listener1()
                 })
         }
+
+        //filter functionality
         $('#filter-button').click(() => {
             searchFilter()
         })
@@ -57,6 +59,7 @@
                     listener1()
                 })
         }
+        // function that grabs values of checkboxes
         const checkValue = () => {
             let arr = [];
             $("input[type='checkbox']").each((index, element) =>{
@@ -66,10 +69,11 @@
             })
             return arr;
         }
+
+        //add new movie to database
         $('#update-data').click(()=>{
+            toggleLoad()
             let newInfo = {title: $('#add-title').val(), rating: $('#add-rating').val(), description: $('#add-des').val(), genre: checkValue()}
-
-
             fetch(movURL, {
                 method: 'POST',
                 headers: {"Content-Type" :"application/json"},
@@ -92,8 +96,8 @@
 *
 *loading screen will be on splash
 * get request for page load
-*        TODO add a movie as a modal using forms
-*         TODO when user adds a movie do a get request for the movie's image from the api/ have a default image in case the movie doesn't have an image in database or in general
+*         add a movie as a modal using forms
+*
 *          TODO delete info button on bottom left that deletes from db
 *          TODO edit info in movies we need to add an edit anchor in middle
 *           TODO book movie button on the bottom right
@@ -104,6 +108,7 @@
 *                TODO ranking system
 *                  TODO filters for the movie infos prioritize movie rating
 *TODO reveals movie info/ maybe a hover effect?
+*  TODO when user adds a movie do a get request for the movie's image from the api/ have a default image in case the movie doesn't have an image in database or in general
 * */
 
 
