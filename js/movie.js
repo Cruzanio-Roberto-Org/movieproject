@@ -27,6 +27,7 @@
         }
 
         const pageLoad = () => {
+            $('#img-display').children().remove();
             fetch(movURL)
                 .then(res => res.json())
                 .then(data => {
@@ -56,9 +57,19 @@
                     listener1()
                 })
         }
+        const checkValue = () => {
+            let arr = [];
+            $("input[type='checkbox']").each((index, element) =>{
+                if(element.checked === true) {
+                    arr.push($(element).val())
+                }
+            })
+            return arr;
+        }
         $('#update-data').click(()=>{
-            let newInfo = {title: $('#add-title').val(), rating: $('#add-rating').val(), description: $('#add-des').val()}
-            console.log($('#add-des').val())
+            let newInfo = {title: $('#add-title').val(), rating: $('#add-rating').val(), description: $('#add-des').val(), genre: checkValue()}
+
+
             fetch(movURL, {
                 method: 'POST',
                 headers: {"Content-Type" :"application/json"},
