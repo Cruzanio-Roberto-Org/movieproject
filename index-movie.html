@@ -74,7 +74,7 @@
                     <img src="img/theaterentrance.jpg" class="card-img" alt="...">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body">
+                    <div class="card-body" data-serv = "">
                         <h5 id="title" class="card-title">Title</h5>
                         <div id="rating-box"><small id="rating">padadw</small></div>
                         <p id="info" class="card-text"></p>
@@ -89,7 +89,61 @@
 </article>
 <article>
     <section>
-        <div id="search-card"></div>
+        <div id="search-card">
+            <div>
+            <form>
+                <label for="filter-search">Search a movie by title:</label>
+                <input id="filter-search" type="text">
+                <button id="filter-button" type="button">Search</button>
+            </form>
+            </div>
+            <div>
+                <form>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn" data-toggle="modal" data-target="#add-form">
+                       Add a movie to our database!
+                    </button>
+                </form>
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="add-form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Your Movie:</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <label for="add-title"> Movie Title:</label>
+                                    <input type="text" id="add-title">
+                                    <label for="add-rating">Movie Rating:</label>
+                                    <select name="add-rating" id="add-rating">
+                                        <option value="G">G</option>
+                                        <option value="PG">PG</option>
+                                        <option value="PG-13">PG-13</option>
+                                        <option value="R">R</option>
+                                        <option value="NC-17">NC-17</option>
+                                    </select>
+                                    <hr>
+                                    <label for="add-des">Movie Description:</label>
+                                    <br>
+                                    <textarea class="w-100" name="add-des" id="add-des" cols="30" rows="5" maxlength="255" placeholder="Type your description here..."></textarea>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button id="update-data" type="button" class="btn btn-primary">Add Movie</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         <div id="img-display">
 
         </div>
