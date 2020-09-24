@@ -40,6 +40,33 @@
         function buttonDis (SoN) {
             $('button').attr('disabled', SoN)
         }
+        //search image
+        /*const imgSearch = (name, number) => {
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=8176c068ae709bb1b0760fbd4fc2800c&query=${name}`)
+                .then(data => data.json())
+                .then((data) => {
+                    let editedImg = {
+                   image: `https://image.tmdb.org/t/p/original${data.results[0].poster_path}`
+                }
+                    fetch(`${movURL}/${number}`, {
+                        method: 'PUT',
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify(editedImg)
+                    }).then(()=> console.log(`success with id ${number}`))
+                })
+        }*/
+        const imgSearch = (name) => {
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=8176c068ae709bb1b0760fbd4fc2800c&query=${name}`)
+                .then(data => data.json())
+                .then((data) => {
+                    console.log(`https://image.tmdb.org/t/p/original${data.results[0].poster_path}`)
+                })
+        }
+        const topThree = input =>{
+         //input.filter((input.ranking)=> )
+
+
+        }
 // default on page display of images
         const pageLoad = () => {
             buttonDis(true)
@@ -50,12 +77,18 @@
                     buttonDis(false)
                     toggleLoad();
                     console.log(data)
-                    for (let element of data) {
-                        $('#img-display').append(`<div class="dis-hover"><img id='${element.id}' src="img/theaterentrance.jpg"></div>`)
+                    let object = data.sort((a, b)=> b.ranking - a.ranking)
+                    for (let i =0; i <=2; i++){
+                        $(`#num${i}`).attr('src', object[i].img)
+                    }
+                    for (let element of object) {
+
+                        $('#img-display').append(`<div class="dis-hover"><img id='${element.id}' src=${element.img} alt="${element.title}"></div>`)
                     }
                     listener1()
                 })
         }
+
 
         //filter functionality
         $('#filter-button').click(() => {
@@ -90,8 +123,9 @@
         }
 
         //add new movie to database
-        $('#update-data').click(() => {
+        /*$('#update-data').click(() => {
             toggleLoad()
+
             let newInfo = {
                 title: $('#add-title').val(),
                 rating: $('#add-rating').val(),
@@ -103,6 +137,26 @@
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(newInfo)
             }).then(pageLoad)
+        })*/
+
+        $('#update-data').click(() => {
+            toggleLoad()
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=8176c068ae709bb1b0760fbd4fc2800c&query=${$('#add-title').val()}`)
+                .then(data => data.json())
+                .then(data => {
+                    let newInfo = {
+                        title: $('#add-title').val(),
+                        rating: $('#add-rating').val(),
+                        description: $('#add-des').val(),
+                        genre: checkValue(),
+                        image: `https://image.tmdb.org/t/p/original${data.results[0].poster_path}`
+                    }
+                    fetch(movURL, {
+                        method: 'POST',
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify(newInfo)
+                    }).then(pageLoad)
+                })
         })
 
 
@@ -127,7 +181,6 @@
             let response = confirm("Would you like to save these changes?")
             if (response) {
                 let newNum = $(".card-main").attr('data-serv')
-                console.log(newNum)
                 let editedInfo = {
                     title: $('#edit-title').val(),
                     rating: $('#edit-rating').val(),

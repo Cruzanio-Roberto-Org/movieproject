@@ -124,6 +124,14 @@ body {
         opacity: 0.5;
     }
 }
+.slider {
+    width: 100% !important;
+    height: 50vh !important;
+}
+.inner-container{
+    height: 400px !important;
+}
+
 /* TODO replace search text with icon
 TODO neon button effect maybe baby blue with white glow
 TODO add rc car logo with company logo
