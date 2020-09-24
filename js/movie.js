@@ -181,4 +181,4 @@
 * TODO when user adds a movie do a get request for the movie's image from the api/ have a default image in case the movie doesn't have an image in database or in general
 * */
 
-
+// ksjadfbasuirhfiasuhrfuiasrfrsfasfasrf
