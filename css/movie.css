@@ -29,12 +29,24 @@ body {
     text-shadow: 1px 1px 5px var(--red-color);
 }
 #jumbo{
-    background-image: url("../img/theaterentrance.jpg");
+    background-image: url("../img/neonsign.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
+
+.slider {
+    width: 60% !important;
+    height: 60vh !important;
+}
+
+.inner-container {
+    width: 100% !important;
+    height: 100% !important;
+    box-shadow: 0px 0px 5px 5px lightgrey;
+}
+
 .cardTog {
     background-color: var(--blue-color);
 }
@@ -75,7 +87,6 @@ body {
 
 #img-display div {
     margin: 20px;
-    /*background-image: url("../img/goldborder.jpg");*/
     background-color: black;
     box-shadow: 0px 0px 10px 5px white;
     border-radius: 5px;
