@@ -91,19 +91,39 @@
         }
 
         //add new movie to database
+        // $('#update-data').click(() => {
+        //     toggleLoad()
+        //     let newInfo = {
+        //         title: $('#add-title').val(),
+        //         rating: $('#add-rating').val(),
+        //         description: $('#add-des').val(),
+        //         genre: checkValue()
+        //     }
+        //     fetch(movURL, {
+        //         method: 'POST',
+        //         headers: {"Content-Type": "application/json"},
+        //         body: JSON.stringify(newInfo)
+        //     }).then(pageLoad)
+        // })
+
         $('#update-data').click(() => {
             toggleLoad()
-            let newInfo = {
-                title: $('#add-title').val(),
-                rating: $('#add-rating').val(),
-                description: $('#add-des').val(),
-                genre: checkValue()
-            }
-            fetch(movURL, {
-                method: 'POST',
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(newInfo)
-            }).then(pageLoad)
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=8176c068ae709bb1b0760fbd4fc2800c&query=${$('#add-title').val()}`)
+                .then(data => data.json())
+                .then(data => {
+                    let newInfo = {
+                        title: $('#add-title').val(),
+                        rating: $('#add-rating').val(),
+                        description: $('#add-des').val(),
+                        genre: checkValue(),
+                        img: `https://image.tmdb.org/t/p/original${data.results[0].poster_path}`
+                    }
+                    fetch(movURL, {
+                        method: 'POST',
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify(newInfo)
+                    }).then(pageLoad)
+                })
         })
 
 
