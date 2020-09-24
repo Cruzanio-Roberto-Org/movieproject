@@ -6,6 +6,11 @@
     --blue-color:#00d1cd;
     --light-color:#00d1cd;
 }
+@font-face {
+    font-family: studioFont;
+    src: url("../fonts/newfont.TTF");
+}
+
 * {
     box-sizing: border-box;
 }
@@ -13,6 +18,7 @@ body {
     background-color: var(--light-main-color);
 
 }
+
 #nav_bar {
     background-color: transparent;
    position: absolute;
@@ -28,6 +34,15 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+.search {
+    color: white;
+    font-size: 20px;
+    font-family: studioFont;
+}
+.searchBar {
+    color: white;
+    background-color: transparent;
 }
 #img-display {
     display: flex;

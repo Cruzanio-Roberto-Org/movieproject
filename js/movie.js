@@ -1,6 +1,5 @@
 (function ($) {
     $(document).ready(function () {
-
         const movURL = 'https://ebony-palm-titanosaurus.glitch.me/movies'
 //load toggle
         const toggleLoad = () => $('.lds-grid').toggleClass('d-none')
@@ -16,7 +15,7 @@
             $('#img-display img').click(function () {
                 fetch(movURL + `/${$(this).attr('id')}`)
                     .then(res => res.json())
-                    .then(({title, rating, description, genre, actors}) => {
+                    .then(({title, rating, description, genre, actors, img}) => {
                         classToggle()
                         $('#title').html(title)
                         $('#rating').html(rating)
@@ -27,8 +26,10 @@
                         $('#edit-title').val(title);
                         $('#edit-des').val(description)
                         $('#edit-rating').val(rating)
+                        $('#cardPoster').attr('src', img)
                         for (let g of genre) {
                             $("#editor input[type='checkbox']").each((index, element) => {
+                                $(element).attr('checked', false)
                                 if (g === $(element).val()) {
                                     $(element).attr('checked', 'checked')
                                 }
@@ -51,7 +52,7 @@
                     toggleLoad();
                     console.log(data)
                     for (let element of data) {
-                        $('#img-display').append(`<div class="dis-hover"><img id='${element.id}' src="img/theaterentrance.jpg"></div>`)
+                        $('#img-display').append(`<div class="dis-hover"><img id='${element.id}' src='${element.img}'></div>`)
                     }
                     listener1()
                 })
@@ -146,8 +147,8 @@
                     .then(pageLoad)
             }
         })
-
         pageLoad();
+
     })
 
 })(jQuery);

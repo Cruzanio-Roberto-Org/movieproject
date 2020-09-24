@@ -16,12 +16,12 @@
     <a class="navbar-brand" id="nav_logo" href="#">R.C. Studios!</a>
 </nav>
 <header>
-<div class="jumbotron jumbotron-fluid" id="jumbo">
-    <div class="container">
-        <h1 class="display-4"></h1>
-        <p class="lead"></p>
+    <div class="jumbotron jumbotron-fluid" id="jumbo">
+        <div class="container">
+            <h1 class="display-4"></h1>
+            <p class="lead"></p>
+        </div>
     </div>
-</div>
 </header>
 <main>
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -71,10 +71,10 @@
         <div class="card mb-3 d-none cardTog" style="max-width: 540px;">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="img/theaterentrance.jpg" class="card-img" alt="...">
+                    <img id="cardPoster" class="card-img" alt="Movie Picture">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body card-main" data-serv = "">
+                    <div class="card-body card-main" data-serv="">
                         <h5 id="title" class="card-title">Title</h5>
                         <div id="rating-box"><small id="rating">padadw</small></div>
                         <p id="info" class="card-text"></p>
@@ -94,25 +94,25 @@
 </article>
 <article>
     <section>
-        <div id="search-card">
-            <div>
-            <form>
-                <label for="filter-search">Search a movie by title:</label>
-                <input id="filter-search" type="text">
-                <button id="filter-button" type="button">Search</button>
-            </form>
-            </div>
-            <div>
-                <form>
+        <div id="search-card" class="container">
+            <div class="row">
+                <form class="col-12 text-center my-3 search">
+                    <label for="filter-search" class="mr-3 searchLabel">Search Title:</label>
+                    <input id="filter-search" type="text" class="mr-2 searchBar">
+                    <button id="filter-button" type="button" >Search</button>
+                </form>
+                <div class="col-12 text-center my-0 search">
+                    <h2>or</h2>
+                </div>
+                <form class="col-12 text-center my-3 search">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn" data-toggle="modal" data-target="#add-form">
-                       Add a movie to our database!
+                    <button type="button" class="btn search" data-toggle="modal" data-target="#add-form">
+                        Add a movie to our database!
                     </button>
                 </form>
-
-
                 <!-- Modal -->
-                <div class="modal fade" id="add-form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="add-form" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -148,20 +148,26 @@
                                     <br>
                                     <label for="add-des">Movie Description:</label>
                                     <br>
-                                    <textarea class="w-100" name="add-des" id="add-des" cols="30" rows="5" maxlength="255" placeholder="Type your description here..."></textarea>
+                                    <textarea class="w-100" name="add-des" id="add-des" cols="30" rows="5"
+                                              maxlength="255" placeholder="Type your description here..."></textarea>
                                 </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button id="update-data" type="button" class="btn btn-primary" data-dismiss="modal">Add Movie</button>
+                                <button id="update-data" type="button" class="btn btn-primary" data-dismiss="modal">Add
+                                    Movie
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div>
+
+            </div>
         </div>
 
-<!--        Edit Modal-->
+        <!--        Edit Modal-->
         <div class="modal fade" id="edit-form" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -198,12 +204,14 @@
                             <br>
                             <label for="add-des">Movie Description:</label>
                             <br>
-                            <textarea class="w-100" name="add-des" id="edit-des" cols="30" rows="5" maxlength="255" placeholder="Type your description here..."></textarea>
+                            <textarea class="w-100" name="add-des" id="edit-des" cols="30" rows="5" maxlength="255"
+                                      placeholder="Type your description here..."></textarea>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="edit-data" type="button" class="btn btn-primary" data-dismiss="modal">Submit Edits</button>
+                        <button id="edit-data" type="button" class="btn btn-primary" data-dismiss="modal">Submit Edits
+                        </button>
                     </div>
                 </div>
             </div>
@@ -211,7 +219,17 @@
 
 
         <div class="d-flex justify-content-center">
-            <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div class="lds-grid">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
         <div id="img-display">
 
@@ -219,7 +237,8 @@
     </section>
 
 </article>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
 <script src="https://kit.fontawesome.com/2a6f78e7e8.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
