@@ -91,7 +91,6 @@
 
         //add new movie to database
         $('#update-data').click(() => {
-            buttonDis(true)
             toggleLoad()
             let newInfo = {
                 title: $('#add-title').val(),
@@ -127,7 +126,6 @@
         $('#edit-data').click(() => {
             let response = confirm("Would you like to save these changes?")
             if (response) {
-                buttonDis(true)
                 let newNum = $(".card-main").attr('data-serv')
                 console.log(newNum)
                 let editedInfo = {
@@ -148,8 +146,6 @@
                     .then(pageLoad)
             }
         })
-
-
 
         pageLoad();
     })
@@ -180,5 +176,3 @@
 * TODO reveals movie info/ maybe a hover effect?
 * TODO when user adds a movie do a get request for the movie's image from the api/ have a default image in case the movie doesn't have an image in database or in general
 * */
-
-
