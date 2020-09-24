@@ -54,7 +54,6 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 .search {
-    text-shadow: 2px 2px black;
     color: white;
     font-size: 20px;
     font-family: studioFont;
