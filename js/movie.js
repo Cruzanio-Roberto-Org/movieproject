@@ -1,5 +1,6 @@
 (function ($) {
     $(document).ready(function () {
+        // $('.puppiness').hide()
         const movURL = 'https://ebony-palm-titanosaurus.glitch.me/movies'
 //load toggle
         const toggleLoad = () => $('.lds-grid').toggleClass('d-none')
@@ -54,7 +55,8 @@
                     console.log(data)
                     let object = data.sort((a, b)=> b.ranking - a.ranking)
                     for (let i =0; i <=2; i++){
-                        $(`#num${i}`).attr('src', object[i].img)
+                        $(`#num${i}`).attr('src', object[i].backdrop)
+                        $(`#${i}`).html(object[i].title)
                     }
                     for (let element of data) {
                         $('#img-display').append(`<div class="dis-hover"><img id='${element.id}' src=${element.img} alt="${element.title}"></div>`)
@@ -62,21 +64,6 @@
                     listener1()
                 })
         }
-//         const pageLoad = () => {
-//             buttonDis(true)
-//             $('#img-display').children().remove();
-//             fetch(movURL)
-//                 .then(res => res.json())
-//                 .then(data => {
-//                     buttonDis(false)
-//                     toggleLoad();
-//                     console.log(data)
-//                     for (let element of data) {
-//                         $('#img-display').append(`<div class="dis-hover"><img id='${element.id}' src='${element.img}'></div>`)
-//                     }
-//                     listener1()
-//                 })
-//         }
 
         //filter functionality
         $('#filter-button').click(() => {
@@ -111,22 +98,6 @@
             return arr;
         }
 
-        //add new movie to database
-        // $('#update-data').click(() => {
-        //     toggleLoad()
-        //     let newInfo = {
-        //         title: $('#add-title').val(),
-        //         rating: $('#add-rating').val(),
-        //         description: $('#add-des').val(),
-        //         genre: checkValue()
-        //     }
-        //     fetch(movURL, {
-        //         method: 'POST',
-        //         headers: {"Content-Type": "application/json"},
-        //         body: JSON.stringify(newInfo)
-        //     }).then(pageLoad)
-        // })
-
         $('#update-data').click(() => {
             toggleLoad()
             fetch(`https://api.themoviedb.org/3/search/movie?api_key=8176c068ae709bb1b0760fbd4fc2800c&query=${$('#add-title').val()}`)
@@ -137,7 +108,8 @@
                         rating: $('#add-rating').val(),
                         description: $('#add-des').val(),
                         genre: checkValue(),
-                        img: `https://image.tmdb.org/t/p/original${data.results[0].poster_path}`
+                        img: `https://image.tmdb.org/t/p/original${data.results[0].poster_path}`,
+                        backdrop: `https://image.tmdb.org/t/p/original${data.results[0].backdrop_path}`
                     }
                     fetch(movURL, {
                         method: 'POST',

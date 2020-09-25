@@ -19,14 +19,14 @@ body {
 
 }
 
-#nav_bar {
-    background-color: transparent;
-   position: absolute;
+#logo {
+    color: var(--gold-color);
+    text-shadow: 1px 1px 10px var(--red-color);
 }
-#nav_logo {
-    color: var(--light-main-color);
-    border: 1px solid var(--red-color);
-    text-shadow: 1px 1px 5px var(--red-color);
+
+#rc-car{
+    width: 50px;
+    height: 50px;
 }
 #jumbo{
     background-image: url("../img/neonsign.jpg");
@@ -35,16 +35,12 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
-
-.slider {
-    width: 60% !important;
-    height: 60vh !important;
-}
-
-.inner-container {
-    width: 100% !important;
-    height: 100% !important;
+.slider{
     box-shadow: 0px 0px 5px 5px lightgrey;
+    border-radius: 15px;
+}
+.slider img {
+    border-radius: 15px;
 }
 
 .cardTog {
@@ -52,7 +48,12 @@ body {
 }
 .darker {
     background-color: rgba(0, 0, 0, 0.5);
-}
+}#filter-button {
+    background-color: mediumpurple;
+ }
+ #searchIcon {
+     color: white;
+ }
 .search {
     color: white;
     font-size: 20px;
@@ -97,6 +98,11 @@ body {
     height: 200px !important;
     width: 200px !important;
 }
+
+.frown {
+    font-size: 100px;
+}
+
 .lds-grid {
     display: inline-block;
     position: relative;
@@ -217,7 +223,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #111;
+    background: mediumpurple;
     left: 0;
     top: 0;
     border-radius: 10px;
@@ -227,6 +233,15 @@ body {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
+}
+
+
+.puppiness {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 5px black;
 }
 /* TODO replace search text with icon
 TODO neon button effect maybe baby blue with white glow
