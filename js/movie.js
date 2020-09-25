@@ -80,10 +80,8 @@
 
         //filter functionality
         $('#filter-button').click(() => {
-            searchFilter()
-        })
-        const searchFilter = () => {
             let input = $('#filter-search').val().toLowerCase();
+            console.log(input)
             $('#img-display').children().remove();
             buttonDis(true)
             toggleLoad()
@@ -91,14 +89,17 @@
                 .then(res => res.json())
                 .then(data => {
                     buttonDis(false)
-                    let newData = data.filter(({searchables}) => searchables.includes(input))
+                    let newData = data.filter(({title}) => title.toLowerCase().includes(input))
                     toggleLoad()
                     for (let element of newData) {
-                        $('#img-display').append(`<div class="dis-hover"><img id='${element.id}' src="img/theaterentrance.jpg"></div>`)
+                        $('#img-display').append(`<div class="dis-hover"><img id='${element.id}' src="${element.img}"></div>`)
                     }
                     listener1()
                 })
-        }
+        })
+
+
+
         // function that grabs values of checkboxes
         const checkValue = () => {
             let arr = [];
@@ -173,7 +174,8 @@
                     title: $('#edit-title').val(),
                     rating: $('#edit-rating').val(),
                     description: $('#edit-des').val(),
-                    genre: checkValue()
+                    genre: checkValue(),
+                    img: $('#cardPoster').attr('src')
                 }
                 fetch(`${movURL}/${newNum}`, {
                     method: 'PUT',
