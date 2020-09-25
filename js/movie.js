@@ -15,7 +15,7 @@
             $('#img-display img').click(function () {
                 fetch(movURL + `/${$(this).attr('id')}`)
                     .then(res => res.json())
-                    .then(({title, rating, description, genre, actors, img}) => {
+                    .then(({title, rating, ranking, description, genre, actors, img}) => {
                         classToggle()
                         $('#title').html(title)
                         $('#rating').html(rating)
@@ -26,6 +26,7 @@
                         $('#edit-title').val(title);
                         $('#edit-des').val(description)
                         $('#edit-rating').val(rating)
+                        $('#edit-ranking').val(ranking)
                         $('#cardPoster').attr('src', img)
                         for (let g of genre) {
                             $("#editor input[type='checkbox']").each((index, element) => {
@@ -134,9 +135,11 @@
                     let newInfo = {
                         title: $('#add-title').val(),
                         rating: $('#add-rating').val(),
+                        ranking: $('#add-ranking').val(),
                         description: $('#add-des').val(),
                         genre: checkValue(),
-                        img: `https://image.tmdb.org/t/p/original${data.results[0].poster_path}`
+                        img: `https://image.tmdb.org/t/p/original${data.results[0].poster_path}`,
+                        backdrop: `https://image.tmdb.org/t/p/original${data.results[0].backdrop_path}`
                     }
                     fetch(movURL, {
                         method: 'POST',
@@ -163,7 +166,6 @@
                     .then(pageLoad)
             }
         })
-
         $('#edit-data').click(() => {
             let response = confirm("Would you like to save these changes?")
             if (response) {
@@ -172,8 +174,10 @@
                 let editedInfo = {
                     title: $('#edit-title').val(),
                     rating: $('#edit-rating').val(),
+                    ranking: $('#edit-ranking').val(),
                     description: $('#edit-des').val(),
-                    genre: checkValue()
+                    genre: checkValue(),
+                    img: $('#cardPoster').attr('src')
                 }
                 fetch(`${movURL}/${newNum}`, {
                     method: 'PUT',
@@ -188,7 +192,6 @@
             }
         })
         pageLoad();
-
     })
 
 })(jQuery);

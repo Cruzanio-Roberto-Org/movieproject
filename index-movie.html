@@ -12,13 +12,10 @@
 </head>
 <body>
 <!-- Image and text -->
-<nav class="navbar navbar-light" id="nav_bar">
-    <a class="navbar-brand" id="nav_logo" href="#">R.C. Studios!</a>
-</nav>
 <header>
     <div class="jumbotron jumbotron-fluid" id="jumbo">
-        <div class="container">
-            <h1 class="display-4"></h1>
+        <div class="container-fluid text-sm-center text-md-right">
+            <h1 id="logo" class="display-4 mr-md-5">RC STUDIOS</h1>
             <p class="lead"></p>
         </div>
     </div>
@@ -147,6 +144,16 @@
                                         <option value="R">R</option>
                                         <option value="NC-17">NC-17</option>
                                     </select>
+                                    <!-- NEW -->
+                                    <label for="add-ranking">Movie Ranking:</label>
+                                    <select name="add-ranking" id="add-ranking">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    <!-- -->
                                     <hr>
                                     <p>Genre: (select all that apply)</p>
                                     <input type="checkbox" id="action" name="action" value="Action/Adventure">
@@ -203,6 +210,16 @@
                                 <option value="R">R</option>
                                 <option value="NC-17">NC-17</option>
                             </select>
+                            <!-- New -->
+                            <label for="edit-ranking">Movie Ranking:</label>
+                            <select name="edit-ranking" id="edit-ranking">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <!---->
                             <hr>
                             <p>Genre: (select all that apply)</p>
                             <input type="checkbox" id="edit-action" name="action" value="Action/Adventure">

@@ -19,14 +19,9 @@ body {
 
 }
 
-#nav_bar {
-    background-color: transparent;
-   position: absolute;
-}
-#nav_logo {
-    color: var(--light-main-color);
-    border: 1px solid var(--red-color);
-    text-shadow: 1px 1px 5px var(--red-color);
+#logo {
+    color: var(--gold-color);
+    text-shadow: 1px 1px 10px var(--red-color);
 }
 #jumbo{
     background-image: url("../img/neonsign.jpg");
