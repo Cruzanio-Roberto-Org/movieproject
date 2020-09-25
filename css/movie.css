@@ -16,14 +16,12 @@
 }
 body {
     background-color: var(--light-main-color);
-
+    font-family: studioFont;
 }
-
 #logo {
     color: var(--gold-color);
     text-shadow: 1px 1px 10px var(--red-color);
 }
-
 #rc-car{
     width: 50px;
     height: 50px;
@@ -35,14 +33,17 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+#carouselHead {
+    color: white;
+    text-shadow: 0px 5px 10px mediumpurple;
+}
 .slider{
-    box-shadow: 0px 0px 5px 5px lightgrey;
+    box-shadow: 0px 0px 5px 5px grey;
     border-radius: 15px;
 }
 .slider img {
     border-radius: 15px;
 }
-
 .cardTog {
     background-color: var(--blue-color);
 }
@@ -58,6 +59,7 @@ body {
     color: white;
     font-size: 20px;
     font-family: studioFont;
+    text-shadow: 0px 5px 10px mediumpurple;
 
 }
 .searchBar {
@@ -237,8 +239,8 @@ body {
 
 
 .puppiness {
-    width: 300px;
-    height: 200px;
+    width: 500px;
+    height: 300px;
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0px 0px 10px 5px black;

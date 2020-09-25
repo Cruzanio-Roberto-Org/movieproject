@@ -1,60 +1,73 @@
 (function ($) {
     $(document).ready(function () {
-        // $('.puppiness').hide()
         const movURL = 'https://ebony-palm-titanosaurus.glitch.me/movies'
-//load toggle
+        //load toggle
         const toggleLoad = () => $('.lds-grid').toggleClass('d-none')
 
-//splash screen toggle
+        //splash screen toggle
         function classToggle() {
             $('#popcorn-guy').addClass('d-none')
             $('.cardTog').removeClass('d-none')
         }
 
-// image to card info listener
+        // image to card info listener
         function listener1() {
             $('#img-display img').click(function () {
                 fetch(movURL + `/${$(this).attr('id')}`)
                     .then(res => res.json())
-                    .then(({title, rating, description, genre, actors, img}) => {
+                    .then(({title, rating, ranking, description, genre, actors, img, backdrop}) => {
                         classToggle()
                         $('#title').html(title)
                         $('#rating').html(rating)
                         $('#info').html(description)
                         $('#genre').html(genre)
                         $('#actors').html(actors)
-                        $('.card-body').attr('data-serv', $(this).attr('id'))
+                        $('.card-main').attr('data-serv', $(this).attr('id'))
+                        $('.card-main').attr('data-back', backdrop)
                         $('#edit-title').val(title);
                         $('#edit-des').val(description)
                         $('#edit-rating').val(rating)
+                        $('#edit-ranking').val(ranking)
                         $('#cardPoster').attr('src', img)
-                        for (let g of genre) {
-                            $("#editor input[type='checkbox']").each((index, element) => {
-                                $(element).attr('checked', false)
-                                if (g === $(element).val()) {
-                                    $(element).attr('checked', 'checked')
+                        console.log(genre.length)
+                        let allCheckBoxes = $(".checkBoxes")
+                        console.log(allCheckBoxes)
+                        for (let i = 0; i < allCheckBoxes.length; i++) {
+                            allCheckBoxes[i].checked = false
+                        }
+                        for (let i = 0; i <= genre.length-1; i++) {
+                            for (let j = 0; j <= allCheckBoxes.length-1; j++) {
+                                if (genre[i] === allCheckBoxes[j].defaultValue) {
+                                    allCheckBoxes[j].checked = true
                                 }
-                            })
+                            }
                         }
                         document.getElementById('des-pane').scrollIntoView()
                     })
             })
         }
-        function buttonDis (SoN) {
+
+        function buttonDis(SoN) {
             $('button').attr('disabled', SoN)
         }
-// default on page display of images
+
+        // default on page display of images
         const pageLoad = () => {
             buttonDis(true)
             $('#img-display').children().remove();
             fetch(movURL)
                 .then(res => res.json())
                 .then(data => {
-                    buttonDis(false)
                     toggleLoad();
+                    buttonDis(false)
+                    $('#add-title').val("")
                     console.log(data)
-                    let object = data.sort((a, b)=> b.ranking - a.ranking)
-                    for (let i =0; i <=2; i++){
+                    let allCheckBoxes = $(".checkBoxes2")
+                    for (let i = 0; i < allCheckBoxes.length; i++) {
+                        allCheckBoxes[i].checked = false
+                    }
+                    let object = data.sort((a, b) => b.ranking - a.ranking)
+                    for (let i = 0; i <= 2; i++) {
                         $(`#num${i}`).attr('src', object[i].backdrop)
                         $(`#${i}`).html(object[i].title)
                     }
@@ -67,6 +80,8 @@
 
         //filter functionality
         $('#filter-button').click(() => {
+            $('.overallPuppy').addClass('d-none')
+            $('#noTitles').addClass('d-none')
             let input = $('#filter-search').val().toLowerCase();
             console.log(input)
             $('#img-display').children().remove();
@@ -77,6 +92,11 @@
                 .then(data => {
                     buttonDis(false)
                     let newData = data.filter(({title}) => title.toLowerCase().includes(input))
+                    if (newData.length === 0) {
+                        $('.overallPuppy').removeClass('d-none')
+                        $('#noTitles').removeClass('d-none')
+                        $('#popcorn-guy').hide()
+                    }
                     toggleLoad()
                     for (let element of newData) {
                         $('#img-display').append(`<div class="dis-hover"><img id='${element.id}' src="${element.img}"></div>`)
@@ -84,8 +104,6 @@
                     listener1()
                 })
         })
-
-
 
         // function that grabs values of checkboxes
         const checkValue = () => {
@@ -99,24 +117,42 @@
         }
 
         $('#update-data').click(() => {
+            $('.overallPuppy').addClass('d-none')
+            $('#noTitles').addClass('d-none')
+            $('#popcorn-guy').show()
             toggleLoad()
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=8176c068ae709bb1b0760fbd4fc2800c&query=${$('#add-title').val()}`)
-                .then(data => data.json())
-                .then(data => {
-                    let newInfo = {
-                        title: $('#add-title').val(),
-                        rating: $('#add-rating').val(),
-                        description: $('#add-des').val(),
-                        genre: checkValue(),
-                        img: `https://image.tmdb.org/t/p/original${data.results[0].poster_path}`,
-                        backdrop: `https://image.tmdb.org/t/p/original${data.results[0].backdrop_path}`
-                    }
-                    fetch(movURL, {
-                        method: 'POST',
-                        headers: {"Content-Type": "application/json"},
-                        body: JSON.stringify(newInfo)
-                    }).then(pageLoad)
-                })
+            if ($('#add-title').val() === "") {
+                alert('Please Enter a valid movie title')
+                toggleLoad()
+            } else {
+                fetch(`https://api.themoviedb.org/3/search/movie?api_key=8176c068ae709bb1b0760fbd4fc2800c&query=${$('#add-title').val()}`)
+                    .then(data => data.json())
+                    .catch(error => console.log("Here's an error"))
+                    .then((data) => {
+                        if (data.total_results === 0) {
+                            $('.overallPuppy').removeClass('d-none')
+                            $('#noTitles').removeClass('d-none')
+                            $('#popcorn-guy').hide()
+                            toggleLoad()
+                        } else {
+                            let newInfo = {
+                                title: $('#add-title').val(),
+                                rating: $('#add-rating').val(),
+                                ranking: $('#add-ranking').val(),
+                                description: $('#add-des').val(),
+                                genre: checkValue(),
+                                img: `https://image.tmdb.org/t/p/original${data.results[0].poster_path}`,
+                                backdrop: `https://image.tmdb.org/t/p/original${data.results[0].backdrop_path}`
+                            }
+                            fetch(movURL, {
+                                method: 'POST',
+                                headers: {"Content-Type": "application/json"},
+                                body: JSON.stringify(newInfo)
+                            }).then(pageLoad)
+                        }
+                    })
+            }
+
         })
 
 
@@ -145,9 +181,11 @@
                 let editedInfo = {
                     title: $('#edit-title').val(),
                     rating: $('#edit-rating').val(),
+                    ranking: $('#edit-ranking').val(),
                     description: $('#edit-des').val(),
                     genre: checkValue(),
-                    img: $('#cardPoster').attr('src')
+                    img: $('#cardPoster').attr('src'),
+                    backdrop: $('.card-main').attr('data-back')
                 }
                 fetch(`${movURL}/${newNum}`, {
                     method: 'PUT',
@@ -188,7 +226,7 @@
 * TODO make Modals pretty
 * TODO add catch for no return search
 * TODO clear the add movie Modal after each use
-* TODO ranking system
+* ranking system
 * TODO filters for the movie infos prioritize movie rating
 * TODO drag and drop with a clip of film roll
 * TODO trailers display option

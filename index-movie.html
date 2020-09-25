@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+          integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <link rel="stylesheet" href="css/movie.css">
     <title>R.C. Studios</title>
 </head>
@@ -17,15 +18,16 @@
 <header>
     <div class="jumbotron jumbotron-fluid" id="jumbo">
         <div class="container-fluid text-sm-center text-md-right">
-            <h1 id="logo" class="display-4 mr-md-5"><img class="mr-3"src="img/rc-car.png" id="rc-car">RC STUDIOS</h1>
+            <h1 id="logo" class="display-4 mr-md-5"><img class="mr-3" src="img/rc-car.png" id="rc-car">RC STUDIOS</h1>
             <p class="lead"></p>
         </div>
     </div>
 </header>
 <main class="container mb-5">
-    <h1 class="text-center mb-3">Chosen by YOU</h1>
-    <div class="row justify-content-center">
-        <div id="carouselExampleCaptions" class="carousel slide slider row justify-content-center" data-ride="carousel">
+    <h1 id="carouselHead" class="text-center mb-3">Chosen by You</h1>
+    <div class="row justify-content-center mt-4">
+        <div id="carouselExampleCaptions" class="carousel slide slider row justify-content-center"
+             data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -62,11 +64,26 @@
         </div>
     </div>
 </main>
+
+
 <article>
     <div id="splash" class="d-flex justify-content-center">
+
+        <!--        Popcorn Guy-->
         <div id="popcorn-guy" class="my-2">
             <img class="rounded-circle" src="img/popcornguy.jpg">
         </div>
+
+        <!--        Puppy-->
+        <div class="overallPuppy row justify-content-center mt-5 d-none">
+            <video controls muted loop class="puppiness">
+                <source src="img/puppiness.webm">
+                <source id="pupvid" src="img/puppiness.mp4">
+                <source src="img/puppiness.ogv">
+            </video>
+        </div>
+
+        <!--        Movie Display-->
         <div class="card mb-3 d-none cardTog" id="des-pane" style="max-width: 540px;">
             <div class="row no-gutters">
                 <div class="col-sm-4">
@@ -104,6 +121,8 @@
         </div>
     </div>
 </article>
+
+<!--Search Banner-->
 <article>
     <section>
         <div id="search-card" class="container-fluid my-5">
@@ -112,7 +131,8 @@
                     <label for="filter-search" class="mr-3 searchLabel">Search Title:</label>
                     <input id="filter-search" type="text" class="mr-2 searchBar">
                     <button id="filter-button" class="rounded-pill" type="button">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" id="searchIcon" fill="currentColor"
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" id="searchIcon"
+                             fill="currentColor"
                              xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                   d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
@@ -147,7 +167,7 @@
                     </button>
                 </form>
 
-                <!-- Modal -->
+                <!-- Add Movie Modal -->
                 <div class="modal fade" id="add-form" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
@@ -170,17 +190,27 @@
                                         <option value="R">R</option>
                                         <option value="NC-17">NC-17</option>
                                     </select>
+                                    <label for="add-ranking">Movie Ranking:</label>
+                                    <select name="add-ranking" id="add-ranking">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
                                     <hr>
                                     <p>Genre: (select all that apply)</p>
-                                    <input type="checkbox" id="action" name="action" value="Action/Adventure">
+                                    <input class="checkBoxes2" type="checkbox" id="action" name="action"
+                                           value="Action/Adventure">
                                     <label for="action">Action/Adventure</label><br>
-                                    <input type="checkbox" id="comedy" name="comedy" value="Comedy">
+                                    <input class="checkBoxes2" type="checkbox" id="comedy" name="comedy" value="Comedy">
                                     <label for="comedy">Comedy</label><br>
-                                    <input type="checkbox" id="romance" name="romance" value="Romance">
+                                    <input class="checkBoxes2" type="checkbox" id="romance" name="romance"
+                                           value="Romance">
                                     <label for="romance">Romance</label><br>
-                                    <input type="checkbox" id="drama" name="drama" value="Drama">
+                                    <input class="checkBoxes2" type="checkbox" id="drama" name="drama" value="Drama">
                                     <label for="drama">Drama</label><br>
-                                    <input type="checkbox" id="horror" name="horror" value="Horror">
+                                    <input class="checkBoxes2" type="checkbox" id="horror" name="horror" value="Horror">
                                     <label for="horror">Horror</label>
                                     <br>
                                     <label for="add-des">Movie Description:</label>
@@ -204,7 +234,7 @@
             </div>
         </div>
 
-        <!--        Edit Modal-->
+        <!--        Edit Movie Modal-->
         <div class="modal fade" id="edit-form" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -226,17 +256,26 @@
                                 <option value="R">R</option>
                                 <option value="NC-17">NC-17</option>
                             </select>
+                            <label for="edit-ranking">Movie Ranking:</label>
+                            <select name="edit-ranking" id="edit-ranking">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
                             <hr>
                             <p>Genre: (select all that apply)</p>
-                            <input type="checkbox" id="edit-action" name="action" value="Action/Adventure">
+                            <input class="checkBoxes" type="checkbox" id="edit-action" name="action"
+                                   value="Action/Adventure">
                             <label for="action">Action/Adventure</label><br>
-                            <input type="checkbox" id="edit-comedy" name="comedy" value="Comedy">
+                            <input class="checkBoxes" type="checkbox" id="edit-comedy" name="comedy" value="Comedy">
                             <label for="comedy">Comedy</label><br>
-                            <input type="checkbox" id="edit-romance" name="romance" value="Romance">
+                            <input class="checkBoxes" type="checkbox" id="edit-romance" name="romance" value="Romance">
                             <label for="romance">Romance</label><br>
-                            <input type="checkbox" id="edit-drama" name="drama" value="Drama">
+                            <input class="checkBoxes" type="checkbox" id="edit-drama" name="drama" value="Drama">
                             <label for="drama">Drama</label><br>
-                            <input type="checkbox" id="edit-horror" name="horror" value="Horror">
+                            <input class="checkBoxes" type="checkbox" id="edit-horror" name="horror" value="Horror">
                             <label for="horror">Horror</label>
                             <br>
                             <label for="add-des">Movie Description:</label>
@@ -254,7 +293,7 @@
             </div>
         </div>
 
-
+        <!--        Loader-->
         <div class="d-flex justify-content-center">
             <div class="lds-grid">
                 <div></div>
@@ -268,21 +307,19 @@
                 <div></div>
             </div>
         </div>
-        <div class="container">
-                <div class="row">
-                    <h1>Title Unavailable</h1><br>
-                    <i class="fas fa-frown frown"></i>
-                </div>
-                <div class="row">
-                    <video controls muted loop class="puppiness">
-                        <source src="img/puppiness.webm">
-                        <source id="pupvid" src="img/puppiness.mp4">
-                        <source src="img/puppiness.ogv">
-                    </video>
-                </div>
+
+        <!--        Not Found-->
+        <div id="noTitles" class="container d-none">
+            <div class="row justify-content-center">
+                <h1>No Titles Found</h1><br>
+            </div>
+            <div class="row justify-content-center">
+                <i class="fas fa-frown frown"></i>
+            </div>
         </div>
-        <div id="img-display">
-        </div>
+
+        <!--        Movie Posters-->
+        <div id="img-display"></div>
     </section>
 
 </article>
