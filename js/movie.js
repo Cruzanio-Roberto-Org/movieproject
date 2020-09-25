@@ -20,8 +20,9 @@
                         $('#title').html(title)
                         $('#rating').html(rating)
                         $('#info').html(description)
-                        $('#genre').html(genre)
+                        $('#genre').html(`<span class="mx-4">${genre.join("</span><span class='mx=4'>")}</span>`)
                         $('#actors').html(actors)
+                        $('#rank').html(`Movie Rating: ${ranking}`)
                         $('.card-main').attr('data-serv', $(this).attr('id'))
                         $('.card-main').attr('data-back', backdrop)
                         $('#edit-title').val(title);
@@ -135,11 +136,18 @@
                             $('#popcorn-guy').hide()
                             toggleLoad()
                         } else {
+                            function descriptionChoice () {
+                                if ($('#add-des').val() === ""){
+                                    return data.results[0].overview
+                                } else{
+                                    return $('#add-des').val()
+                                }
+                            }
                             let newInfo = {
                                 title: $('#add-title').val(),
                                 rating: $('#add-rating').val(),
                                 ranking: $('#add-ranking').val(),
-                                description: $('#add-des').val(),
+                                description: descriptionChoice(),
                                 genre: checkValue(),
                                 img: `https://image.tmdb.org/t/p/original${data.results[0].poster_path}`,
                                 backdrop: `https://image.tmdb.org/t/p/original${data.results[0].backdrop_path}`

@@ -9,6 +9,7 @@
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
           integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/movie.css">
     <title>R.C. Studios</title>
 </head>
@@ -84,25 +85,26 @@
         </div>
 
         <!--        Movie Display-->
-        <div class="card mb-3 d-none cardTog" id="des-pane" style="max-width: 540px;">
-            <div class="row no-gutters">
+        <div class="card mb-5 d-none cardTog" id="des-pane"><!--style="max-width: 540px;"-->
+            <div class="row h-100 no-gutters">
                 <div class="col-sm-4">
-                    <img id="cardPoster" class="card-img" alt="Movie Picture">
+                    <img id="cardPoster" class="card-img h-100" alt="Movie Picture">
                 </div>
                 <div class="col-sm-8 darker">
                     <div class="card-body card-main h-100" data-serv="">
                         <div class="row ml-3">
-                            <h5 id="title" class="card-title"></h5>
-                            <div id="rating-box"><small id="rating"></small></div>
+                            <h1 id="title" class="card-title mr-auto"></h1>
+                            <div id="rating-box" class="mr-3"><small id="rating"></small></div>
                         </div>
-                        <div class="row justify-content-center my-3">
-                            <p id="info" class="card-text"></p>
-                        </div>
+
                         <div class="row justify-content-center mt-3">
 
                         </div>
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center m-3">
                             <p id="genre" class="card-text"></p>
+                        </div>
+                        <div class="row justify-content-center m-3" id="card-paragraph">
+                            <p id="info" class="card-text"></p>
                         </div>
                         <div class="row justify-content-center">
                             <p class="card-text"><small id="rank"></small></p>
@@ -110,10 +112,10 @@
                         <div class="row justify-content-center">
                             <p id="actors" class="card-text"></p>
                         </div>
-                        <div class="row justify-content-around mt-5">
-                            <button type="button" id="delete">Delete</button>
-                            <button type="button" id="edit" data-toggle="modal" data-target="#edit-form">Edit</button>
-                            <button type="button" id="book">Book</button>
+                        <div class="row justify-content-around card-button-container">
+                            <button class="rounded-pill p-2" type="button" id="delete">Delete</button>
+                            <button class="rounded-pill p-2" type="button" id="edit" data-toggle="modal" data-target="#edit-form">Edit</button>
+                            <button class="rounded-pill p-2" type="button" id="book">Book</button>
                         </div>
                     </div>
                 </div>
@@ -168,7 +170,7 @@
                 </form>
 
                 <!-- Add Movie Modal -->
-                <div class="modal fade" id="add-form" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade modal-form" id="add-form" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -179,7 +181,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <form id="addition">
                                     <label for="add-title"> Movie Title:</label>
                                     <input type="text" id="add-title">
                                     <label for="add-rating">Movie Rating:</label>
@@ -215,8 +217,9 @@
                                     <br>
                                     <label for="add-des">Movie Description:</label>
                                     <br>
-                                    <textarea class="w-100" name="add-des" id="add-des" cols="30" rows="5"
-                                              maxlength="255" placeholder="Type your description here..."></textarea>
+                                    <textarea onkeyup="counter(this)" class="w-100" name="add-des" id="add-des" cols="30" rows="5"
+                                              maxlength="256" placeholder="Type your description here..."></textarea>
+                                    <p class="charNum text-right">0 characters</p>
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -235,7 +238,7 @@
         </div>
 
         <!--        Edit Movie Modal-->
-        <div class="modal fade" id="edit-form" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal fade modal-form" id="edit-form" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -280,8 +283,9 @@
                             <br>
                             <label for="add-des">Movie Description:</label>
                             <br>
-                            <textarea class="w-100" name="add-des" id="edit-des" cols="30" rows="5" maxlength="255"
+                            <textarea onkeyup="counter(this)" class="w-100" name="add-des" id="edit-des" cols="30" rows="5" maxlength="256"
                                       placeholder="Type your description here..."></textarea>
+                            <p class="charNum text-right">0 characters</p>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -337,5 +341,13 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
 <script src="js/movie.js"></script>
+<script>function counter(chars){
+    var maxLength = 256;
+var strLength = chars.value.length;
+if(strLength === maxLength){
+    $('.charNum').html(`<span style="color: red;">${strLength} out of ${maxLength} characters</span>`);
+}else{
+    $('.charNum').html(strLength+' out of '+maxLength+' characters')}
+}</script>
 </body>
 </html>

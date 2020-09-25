@@ -46,6 +46,20 @@ body {
 }
 .cardTog {
     background-color: var(--blue-color);
+    width: 70%;
+    font-size: 1.5rem;
+}
+#info {
+    font-size: 1rem !important;
+}
+.card-button-container{
+ margin-top: 40%;
+}
+.card-button-container button{
+    background-color: mediumpurple;
+    color: white;
+}
+#card-paragraph{
 }
 .darker {
     background-color: rgba(0, 0, 0, 0.5);
@@ -94,11 +108,10 @@ body {
     border-radius: 5px;
 
 }
-
 #popcorn-guy img {
     box-shadow: 0px 0px 10px 10px mediumpurple;
-    height: 200px !important;
-    width: 200px !important;
+    height: 350px !important;
+    width: 350px !important;
 }
 
 .frown {
@@ -244,6 +257,9 @@ body {
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0px 0px 10px 5px black;
+}
+.card-main, .modal-form{
+    font-family: 'Roboto Slab', serif !important;
 }
 /* TODO replace search text with icon
 TODO neon button effect maybe baby blue with white glow
