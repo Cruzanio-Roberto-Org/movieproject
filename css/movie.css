@@ -23,7 +23,7 @@ body {
     text-shadow: 1px 1px 5px var(--red-color);
 }
 #jumbo{
-    background-image: url("../img/theaterentrance.jpg");
+    background-image: url("../img/sign.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
