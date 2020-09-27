@@ -68,6 +68,7 @@
                         allCheckBoxes[i].checked = false
                     }
                     let object = data.sort((a, b) => b.ranking - a.ranking)
+                    $('#carousel-display').removeClass('d-none')
                     for (let i = 0; i <= 2; i++) {
                         $(`#num${i}`).attr('src', object[i].backdrop).attr('data-serv', object[i].id)
                         $(`#${i}`).html(object[i].title)
@@ -93,13 +94,14 @@
                     buttonDis(false)
                     let newData = data.filter(({title, description, genre}) => title.toLowerCase().includes(input) || description.toLowerCase().includes(input) || genre.join(" ").toLowerCase().includes(input))
                     if (newData.length === 0) {
+                        $('.cardTog').addClass('d-none')
                         $('.overallPuppy').removeClass('d-none')
                         $('#noTitles').removeClass('d-none')
                         $('#popcorn-guy').hide()
                     }
                     toggleLoad()
                     for (let element of newData) {
-                        $('#img-display').append(`<div class="dis-hover"><img id='${element.id}' src="${element.img}"></div>`)
+                        $('#img-display').append(`<div class="dis-hover"><img data-serv='${element.id}' src="${element.img}"></div>`)
                     }
                     listener1()
                 })
