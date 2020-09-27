@@ -100,18 +100,14 @@
         <!--        Movie Display-->
         <div class="card mb-5 d-none cardTog" id="des-pane"><!--style="max-width: 540px;"-->
             <div class="row h-100 no-gutters">
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     <img id="cardPoster" class="card-img h-100" alt="Movie Picture">
                 </div>
-                <div class="col-sm-8 darker">
+                <div class="col-sm-7 darker">
                     <div class="card-body card-main h-100" data-serv="">
                         <div class="row ml-3">
                             <h1 id="title" class="card-title mr-auto"></h1>
                             <div id="rating-box" class="mr-3"><small id="rating"></small></div>
-                        </div>
-
-                        <div class="row justify-content-center mt-3">
-
                         </div>
                         <div class="row justify-content-center m-3">
                             <p id="genre" class="card-text"></p>
@@ -125,7 +121,7 @@
                         <div class="row justify-content-center">
                             <p id="actors" class="card-text"></p>
                         </div>
-                        <div class="row justify-content-around card-button-container">
+                        <div class="row d-flex justify-content-around card-button-container">
                             <button class="rounded-pill p-2" type="button" id="delete">Delete</button>
                             <button class="rounded-pill p-2" type="button" id="edit" data-toggle="modal" data-target="#edit-form">Edit</button>
                             <button class="rounded-pill p-2" type="button" id="book">Book</button>
@@ -141,11 +137,11 @@
 <article>
     <section>
         <div id="search-card" class="container-fluid my-5">
-            <div class="row">
+            <div class="row p-3">
                 <form class="col-12 text-center my-3 search">
                     <label for="filter-search" class="mr-3 searchLabel">Search Movie:</label>
                     <input id="filter-search" type="text" class="mr-2 searchBar">
-                    <button id="filter-button" class="rounded-pill" type="button">
+                    <button id="filter-button" class="rounded-pill mt-3" type="button">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" id="searchIcon"
                              fill="currentColor"
                              xmlns="http://www.w3.org/2000/svg">

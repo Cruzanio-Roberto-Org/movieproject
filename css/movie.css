@@ -55,7 +55,6 @@ body {
     border-radius: 15px;
 }
 .cardTog {
-    /*background-color: var(--blue-color);*/
     background-image: url("../img/whitey.png");
     background-color: white;
     box-shadow: 0px 0px 10px 3px mediumpurple;
@@ -65,12 +64,11 @@ body {
 #info {
     font-size: 1rem !important;
 }
-/*.card-button-container{*/
-/* margin-top: 40%;*/
-/*}*/
+
 .card-button-container button{
     background-color: mediumpurple;
     color: white;
+    font-size: 1.2rem !important;
 }
 
 #filter-button {
@@ -271,6 +269,43 @@ body {
 .card-main, .modal-form{
     font-family: 'Roboto Slab', serif !important;
 }
+@media only screen and (max-width: 768px) {
+    .card-button-container{
+     margin-top: 10%;
+    }
+    .cardTog{
+        width: 88%;
+    }
+}
+@media only screen and (min-width: 769px){
+    .card-button-container{
+        margin-top: 15%;
+    }
+    .cardTog{
+        width: 80%;
+    }
+}
+@media only screen and (min-width: 992px){
+    .card-button-container{
+        margin-top: 20%;
+    }
+    .cardTog{
+        width: 70%;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .card-button-container{
+        margin-top: 25%;
+    }
+    .cardTog{
+        width: 60%;
+    }
+}
+
+
+
+
+
 /* TODO replace search text with icon
 TODO neon button effect maybe baby blue with white glow
 TODO add rc car logo with company logo

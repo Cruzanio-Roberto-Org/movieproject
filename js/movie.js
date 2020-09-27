@@ -214,7 +214,6 @@
 })(jQuery);
 
 /*Movie displayed in cards
-*
 * Advertised movies in a carousel
 * carousel advertises the top three rated movies, title of carousel connects user to seeing what is popular
 * each card outer border with image metal plating
@@ -231,7 +230,7 @@
 * disable attribute on click listeners when loading
 * image with the movie from api
 * when user adds a movie do a get request for the movie's image from the api/ have a default image in case the movie doesn't have an image in database or in general
-* TODO make Modals pretty
+*make Modals pretty
 * add catch for no return search
 * clear the add movie Modal after each use
 * ranking system
@@ -241,4 +240,6 @@ TODO visual ranking system
 * TODO filters for the movie infos prioritize movie rating
 * TODO drag and drop with a clip of film roll
 * TODO trailers display option
+*  TODO image selector for new movies added to make sure correct poster is linked with the new movie
+*   TODO update image alts
 * */
