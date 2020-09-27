@@ -20,7 +20,7 @@
                         $('#title').html(title)
                         $('#rating').html(rating)
                         $('#info').html(description)
-                        $('#genre').html(`<span class="mx-4">${genre.join("</span><span class='mx=4'>")}</span>`)
+                        $('#genre').html(`<span class="mx-2">${genre.join("</span><span class='mx-2'>")}</span>`)
                         $('#actors').html(actors)
                         $('#rank').html(`Movie Rating: ${ranking}`)
                         $('.card-main').attr('data-num', $(this).attr('data-serv')).attr('data-back', backdrop)
