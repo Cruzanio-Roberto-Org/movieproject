@@ -12,8 +12,8 @@
 
         // image to card info listener
         function listener1() {
-            $('#img-display img').click(function () {
-                fetch(movURL + `/${$(this).attr('id')}`)
+            $('.click-img img, #num0, #num1, #num2').click(function () {
+                fetch(movURL + `/${$(this).attr('data-serv')}`)
                     .then(res => res.json())
                     .then(({title, rating, ranking, description, genre, actors, img, backdrop}) => {
                         classToggle()
@@ -23,7 +23,7 @@
                         $('#genre').html(`<span class="mx-4">${genre.join("</span><span class='mx=4'>")}</span>`)
                         $('#actors').html(actors)
                         $('#rank').html(`Movie Rating: ${ranking}`)
-                        $('.card-main').attr('data-serv', $(this).attr('id'))
+                        $('.card-main').attr('data-num', $(this).attr('data-serv'))
                         $('.card-main').attr('data-back', backdrop)
                         $('#edit-title').val(title);
                         $('#edit-des').val(description)
@@ -69,11 +69,11 @@
                     }
                     let object = data.sort((a, b) => b.ranking - a.ranking)
                     for (let i = 0; i <= 2; i++) {
-                        $(`#num${i}`).attr('src', object[i].backdrop)
+                        $(`#num${i}`).attr('src', object[i].backdrop).attr('data-serv', object[i].id)
                         $(`#${i}`).html(object[i].title)
                     }
                     for (let element of data) {
-                        $('#img-display').append(`<div class="dis-hover"><img id='${element.id}' src=${element.img} alt="${element.title}"></div>`)
+                        $('#img-display').append(`<div class="dis-hover"><img data-serv='${element.id}' src=${element.img} alt="${element.title}"></div>`)
                     }
                     listener1()
                 })
@@ -167,7 +167,7 @@
             let response = confirm("Would you like to delete this movie?")
             if (response) {
                 buttonDis(true)
-                let idNum = $(".card-main").attr('data-serv')
+                let idNum = $(".card-main").attr('data-num')
                 fetch(`${movURL}/${idNum}`, {
                     method: 'DELETE',
                     headers: {"Content-Type": "application/json"}
@@ -183,7 +183,7 @@
         $('#edit-data').click(() => {
             let response = confirm("Would you like to save these changes?")
             if (response) {
-                let newNum = $(".card-main").attr('data-serv')
+                let newNum = $(".card-main").attr('data-num')
                 console.log(newNum)
                 let editedInfo = {
                     title: $('#edit-title').val(),
