@@ -84,7 +84,6 @@
             $('.overallPuppy').addClass('d-none')
             $('#noTitles').addClass('d-none')
             let input = $('#filter-search').val().toLowerCase();
-            console.log(input)
             $('#img-display').children().remove();
             buttonDis(true)
             toggleLoad()
@@ -92,7 +91,7 @@
                 .then(res => res.json())
                 .then(data => {
                     buttonDis(false)
-                    let newData = data.filter(({title}) => title.toLowerCase().includes(input))
+                    let newData = data.filter(({title, description, genre}) => title.toLowerCase().includes(input) || description.toLowerCase().includes(input) || genre.join(" ").toLowerCase().includes(input))
                     if (newData.length === 0) {
                         $('.overallPuppy').removeClass('d-none')
                         $('#noTitles').removeClass('d-none')
