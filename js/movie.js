@@ -23,16 +23,15 @@
                         $('#genre').html(`<span class="mx-4">${genre.join("</span><span class='mx=4'>")}</span>`)
                         $('#actors').html(actors)
                         $('#rank').html(`Movie Rating: ${ranking}`)
-                        $('.card-main').attr('data-num', $(this).attr('data-serv'))
-                        $('.card-main').attr('data-back', backdrop)
-                        $('#edit-title').val(title);
+                        $('.card-main').attr('data-num', $(this).attr('data-serv')).attr('data-back', backdrop)
+                        $('#edit-title').val(title)
                         $('#edit-des').val(description)
                         $('#edit-rating').val(rating)
                         $('#edit-ranking').val(ranking)
                         $('#cardPoster').attr('src', img)
-                        console.log(genre.length)
+                        //console.log(genre.length)
                         let allCheckBoxes = $(".checkBoxes")
-                        console.log(allCheckBoxes)
+                        //console.log(allCheckBoxes)
                         for (let i = 0; i < allCheckBoxes.length; i++) {
                             allCheckBoxes[i].checked = false
                         }
@@ -236,7 +235,9 @@
 * add catch for no return search
 * clear the add movie Modal after each use
 * ranking system
-* TODO play with display
+* * TODO play with display
+* //TODO FUTURE UPDATES
+TODO visual ranking system
 * TODO filters for the movie infos prioritize movie rating
 * TODO drag and drop with a clip of film roll
 * TODO trailers display option
