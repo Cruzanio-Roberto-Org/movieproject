@@ -231,9 +231,10 @@
 * image with the movie from api
 * when user adds a movie do a get request for the movie's image from the api/ have a default image in case the movie doesn't have an image in database or in general
 * TODO make Modals pretty
-* TODO add catch for no return search
-* TODO clear the add movie Modal after each use
+* add catch for no return search
+* clear the add movie Modal after each use
 * ranking system
+* TODO play with display
 * TODO filters for the movie infos prioritize movie rating
 * TODO drag and drop with a clip of film roll
 * TODO trailers display option

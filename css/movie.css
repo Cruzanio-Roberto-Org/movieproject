@@ -26,6 +26,14 @@ body {
     width: 50px;
     height: 50px;
 }
+.modal-header {
+    background-color: mediumpurple;
+    color: white
+}
+.purp {
+    background-color: mediumpurple;
+    color: white;
+}
 #jumbo{
     background-image: url("../img/neonsign.jpg");
     -webkit-background-size: cover;
@@ -52,9 +60,9 @@ body {
 #info {
     font-size: 1rem !important;
 }
-.card-button-container{
- margin-top: 40%;
-}
+/*.card-button-container{*/
+/* margin-top: 40%;*/
+/*}*/
 .card-button-container button{
     background-color: mediumpurple;
     color: white;
